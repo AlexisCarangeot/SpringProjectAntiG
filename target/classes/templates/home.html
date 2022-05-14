@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'accueil</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="starter-kit.css">
+</head>
+<body>
+<div class="background-gradient"></div>
+<div class="top-menu">
+    <img src="img/user.png"/>
+    <p th:text="${prenom} +' '+ ${nom}"></p>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="button">Se déconnecter</button>
+    </form>
+</div>
+<div class="container home">
+    <div class="card">
+        <p>Liste des paniers</p>
+        <form th:action="@{/paniers}" method="get">
+            <button type="submit" class="button">Parcourir</button>
+        </form>
+    </div>
+    <div class="card">
+        <p>Liste des commerçants</p>
+        <form th:action="@{/commercants}" method="get">
+            <button type="submit" class="button">Parcourir</button>
+        </form>
+    </div>
+    <div class="card" th:if="${idRole == 1}">
+        <p>Administration</p>
+        <form th:action="@{/admin}" method="get">
+            <button type="submit" class="button">Accéder</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

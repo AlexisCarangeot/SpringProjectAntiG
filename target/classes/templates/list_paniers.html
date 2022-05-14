@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des paniers</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="starter-kit.css">
+</head>
+<body>
+<div class="background-gradient"></div>
+<div class="top-menu">
+    <form th:action="@{home}" method="get">
+        <button type="submit" class="home-redirection"><img src="img/home.png"/></button>
+    </form>
+    <img src="img/user.png"/>
+    <p th:text="${prenom} +' '+ ${nom}"></p>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="button">Se déconnecter</button>
+    </form>
+</div>
+
+<div class="container">
+    <h1 class="list-panier-title">Liste des paniers</h1>
+    <div class="list-panier">
+        <div th:each="p:${paniers}" class="card-panier">
+            <div class="panier-categorie">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2a6 6 0 0 1 6 6v1h4v2h-1.167l-.757 9.083a1 1 0 0 1-.996.917H4.92a1 1 0 0 1-.996-.917L3.166 11H2V9h4V8a6 6 0 0 1 6-6zm1 11h-2v4h2v-4zm-4 0H7v4h2v-4zm8 0h-2v4h2v-4zm-5-9a4 4 0 0 0-3.995 3.8L8 8v1h8V8a4 4 0 0 0-3.8-3.995L12 4z"/></svg>
+                <span th:text="${p.categorie.nom}"></span>
+            </div>
+            <p class="panier-commercant" th:text="${p.commercant.nom}"></p>
+            <div class="panier-localisation">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0zM12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+                <span th:text="${p.localisation}"></span>
+            </div>
+            <form th:action="@{panier}" method="get">
+                <input type="hidden" name="id" th:value="${p.id}" />
+                <button type="submit" class="button button-panier-reserve">Réserver</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

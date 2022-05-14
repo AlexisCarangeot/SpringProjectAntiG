@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AntiG</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="starter-kit.css">
+</head>
+<body>
+<div class="background-gradient"></div>
+<div class="container index">
+    <h1>Bienvenue sur AntiG !</h1>
+    <p>Pour continuer, veuillez vous authentifier.</p>
+    <a class="index-link-login" th:href="@{/login}">
+        <button class="index-button-register button">Se connecter</button>
+    </a>
+    <a class="index-register-link" th:href="@{/register}">Pas encore inscrit? <span>S'enregistrer</span></a>
+</div>
+
+</body>
+</html>
